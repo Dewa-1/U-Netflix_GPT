@@ -1,5 +1,6 @@
 export const checkValidData = (email, password) => {
 
+
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const isPasswordValid =
@@ -9,7 +10,9 @@ export const checkValidData = (email, password) => {
 
 
 
-
+    if (!isPhoneNumberValid) {
+        return "Invalid phone number.";
+    }
 
     if (!isEmailValid) {
         return "Invalid email.";
