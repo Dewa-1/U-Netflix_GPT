@@ -16,7 +16,7 @@ const Login = () => {
   const handleClick = () => {
     const message = checkValidData(
       email.current.value,
-      password.current.value
+      password.current.value, phoneNumber.current.value, username.current.value
     );
     setErrorMessage(message);
 
