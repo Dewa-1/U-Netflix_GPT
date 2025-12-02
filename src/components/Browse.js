@@ -3,7 +3,7 @@ import React from 'react'
 const Browse = () => {
   return (
     <div>
-      Browse
+      <h1>Welcome to the Browser Page!!!</h1>
     </div>
   )
 }

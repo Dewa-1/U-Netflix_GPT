@@ -6,10 +6,15 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";   
 
 const Login = () => {
   const [IsSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const username = useRef(null);
   const phoneNumber = useRef(null);
@@ -40,13 +45,18 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          dispatch(addUser({
+            uid: user.uid,
+            email: user.email,
+          }));
           alert("User registered successfully");
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          setErrorMessage(`${errorCode} - ${errorMessage}`);
           alert("Error signing up: " + errorMessage); 
           // ..
         });
@@ -61,12 +71,13 @@ const Login = () => {
           const user = userCredential.user;
           console.log(user);
           alert("User signed in successfully");
+          navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+          setErrorMessage(`${errorCode} - ${errorMessage}`);
           alert("Error signing in: " + errorMessage);
         });
     }
