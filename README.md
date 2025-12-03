@@ -13,6 +13,11 @@
 - Creating user by firebase api
 - Signing In user by firebase api
 - Setting up redux store
+- central OnAuth setUp kiya taaki har jgh dispatch action na karna pde
+- update Profile firebase API se displayName kiya
+- Signout API lgayi header me button k through
+- login se profile picture bhi update ho rhi hai (photoURL)
+- condtional rendering lga di hai ki jb sign-in/sign-up ho tab tb signout na dikhe
 
 # Features
 

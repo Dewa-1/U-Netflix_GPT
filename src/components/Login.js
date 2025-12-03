@@ -5,16 +5,14 @@ import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";   
+import { useNavigate } from "react-router-dom"; 
 
 const Login = () => {
   const [IsSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const username = useRef(null);
   const phoneNumber = useRef(null);
@@ -24,7 +22,7 @@ const Login = () => {
   const handleClick = () => {
     const message = checkValidData(
       email.current.value,
-      password.current.value,
+      password.current.value
     );
     setErrorMessage(message);
 
@@ -38,17 +36,31 @@ const Login = () => {
 
       createUserWithEmailAndPassword(
         auth,
-        email.current.value,
+        email.current.value,              //yha auth ki state change hui pehle uske baad hi onAuthStateChanged chalega
         password.current.value
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+
+updateProfile(user, {
+  displayName: username.current.value, photoURL: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+}).then(() => {
+  
+  navigate("/browse");
+}).catch((error) => {
+
+  setErrorMessage(error.message);
+  // An error occurred
+  // ...
+});
+
+
           console.log(user);
-          dispatch(addUser({
-            uid: user.uid,
-            email: user.email,
-          }));
+                                             // dispatch(addUser({    //Ek tareeka hai redux me user info store karne ka
+                                              //   uid: user.uid,
+                                              //   email: user.email,
+                                              // }));
           alert("User registered successfully");
           navigate("/browse");
           // ...
