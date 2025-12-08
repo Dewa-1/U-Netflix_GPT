@@ -18,6 +18,9 @@
 - Signout API lgayi header me button k through
 - login se profile picture bhi update ho rhi hai (photoURL)
 - condtional rendering lga di hai ki jb sign-in/sign-up ho tab tb signout na dikhe
+- Bugfix: central navigation system taaki user !login  to browse page nhi show hoga Nd vice-versa
+- unsubcribing onauthstate change kyunki as a event listener kaam kar rha hai to memeory leak bnhi ho sakta hai
+- Added constants folder for keeping long strings and photo_URLS
 
 # Features
 

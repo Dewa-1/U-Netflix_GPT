@@ -1,39 +1,60 @@
-import { signOut } from "firebase/auth";
-import React from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { defaultImage, defaultProfileImage, netflixLogo } from "../utils/constants";
 
 const Header = () => {
   const user = useSelector((store) => store.user); //Yha se bde redux store se jo user slice hai wha se user ki info le rhe hain
 
-  console.log("Header User Info:", user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        navigate("/");
         // Sign-out successful.
       })
       .catch((error) => {
-        navigate("/errorpage"); // An error happened.
+        // An error happened.
+        navigate("/errorPage")
       });
   };
 
-  const defaultImage =
-    "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+  useEffect(() => {
+    const unsubscribe =  onAuthStateChanged(auth, (user) => {
+      if (user) {
+        //ye tab chalega jb signIn ya signUp successfully ho jaye
+
+        const { uid, email, displayName, photoURL } = user; //pehle login wali firebase api chalegi uske baad yha onAuthStateChanged chalega
+        dispatch(addUser({ uid, email, displayName, photoURL }));    // Aur jese auth chla wese hi user ki info ko redux me store ho ja rhi hai
+        navigate("/browse"); // ...
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+        // User is signed out
+        // ...
+      }
+    });
+
+    //ye tab call hoga jb component unmount hoga kyunki jitine baar useEffect chalega utni baar eye event listener type hoga memory leak ka issue aayega
+    return () => unsubscribe();
+  }, []);
+
+
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-screen flex items-center justify-between">
       <img
         className="w-44"
-        src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+        src={netflixLogo}
         alt=" NetflixLogo"
       />
       <div className="flex items-center gap-4">
         <img
           className="w-12 h-12 rounded-lg"
-          src={user?.photoURL ? user.photoURL : defaultImage}
+          src={user?.photoURL ? user.photoURL : defaultProfileImage}
           alt="user-icon"
         />
         {user && (
