@@ -58,7 +58,6 @@ const Login = () => {
               // ...
             });
 
-          console.log(user);
           // dispatch(addUser({    //Ek tareeka hai redux me user info store karne ka
           //   uid: user.uid,
           //   email: user.email,
@@ -84,7 +83,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
           alert("User signed in successfully");
           // ...
         })

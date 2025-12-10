@@ -4,7 +4,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { defaultImage, defaultProfileImage, netflixLogo } from "../utils/constants";
+import { defaultProfileImage, netflixLogo } from "../utils/constants";
 
 const Header = () => {
   const user = useSelector((store) => store.user); //Yha se bde redux store se jo user slice hai wha se user ki info le rhe hain
@@ -51,16 +51,16 @@ const Header = () => {
         src={netflixLogo}
         alt=" NetflixLogo"
       />
-      <div className="flex items-center gap-4">
+      <div className="flex-col place-items-center justify-between">
         <img
-          className="w-12 h-12 rounded-lg"
+          className="w-12 h-12 rounded-[50%] "
           src={user?.photoURL ? user.photoURL : defaultProfileImage}
           alt="user-icon"
         />
         {user && (
           <button
             onClick={handleSignOut}
-            className="bg-red-600 px-4 py-2 rounded-md text-white "
+            className="bg-red-600 px-4 py-2 rounded-md text-white mt-2"
           >
             Sign Out
           </button>

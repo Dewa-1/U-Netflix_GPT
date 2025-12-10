@@ -21,6 +21,15 @@
 - Bugfix: central navigation system taaki user !login  to browse page nhi show hoga Nd vice-versa
 - unsubcribing onauthstate change kyunki as a event listener kaam kar rha hai to memeory leak bnhi ho sakta hai
 - Added constants folder for keeping long strings and photo_URLS
+- Registered on TMDB and create a app. When asked for url so pasted netlify app url
+- Then we'll get the API and api accesstoken
+- Go to movielists > Now playing movies > copy the code and make a fetch API call in browse page
+- VideoBackground me background trailer attach karna with help of Videos API from TMDB
+- VideoTitle me getNowPlaying movies se data show karna movie name, overview
+- Getting random movie at each refresh by random logic from Netflix
+- trailerVideo adding in redux MovieSlice
+
+
 
 # Features
 
