@@ -7,7 +7,6 @@ const VideoBackground = ({backgroundImage, movieId}) => {
   const dispatch = useDispatch();
 
   const videotrailerdata = useSelector((store)=>store.movies?.trailerVideo);
-  console.log(videotrailerdata);
 
   const getMovieVideos = async()=> {    //Yha par hum videos wali API se Trailer fetch kar rhe hn taaki fir show kar ske
     const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_options);

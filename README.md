@@ -33,6 +33,10 @@
 - Secondary Container me MovieList and MovieCard ki design di aur scrollable bnaya
 - Secondary Container ko bg-black diya aur black gradient diya
 - MovieList me MovieCard ko loop kra diya
+- Now playing movies, Top Rated Movies, Popular Movies, Upcoming movies ki API se data fetch karke different movie List
+- sabke like differnet hooks bnaye aur redux store me store karwaya
+- Made the Browse page wholesome and amazing
+
 
 
 
