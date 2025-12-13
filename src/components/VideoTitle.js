@@ -4,7 +4,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 const VideoTitle = ({ title, overview, posterImage }) => {
   return (
-    <div className="py-36 px-10 w-1/3 ">
+    <div className="pt-36 px-10 w-1/3 ">
       <div className="my-10">
         <img
           className="w-56 bg-gradient-to-b from-black rounded-md border-none outline-none h-28"

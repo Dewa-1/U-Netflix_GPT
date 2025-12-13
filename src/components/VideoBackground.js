@@ -20,9 +20,9 @@ const VideoBackground = ({backgroundImage, movieId}) => {
     dispatch(addTrailerVideo(trailer));
   }
 
-  useEffect(()=>{
-     getMovieVideos();
-  },[movieId]);
+  useEffect(()=> {
+    getMovieVideos();
+  }, [movieId])
 
 if (!videotrailerdata) return null;
 

@@ -28,6 +28,11 @@
 - VideoTitle me getNowPlaying movies se data show karna movie name, overview
 - Getting random movie at each refresh by random logic from Netflix
 - trailerVideo adding in redux MovieSlice
+- Embeded Youtube video in VideoBackground make it autoplay and Mute (Tailwind CSS : ex- aspect video)
+- Planning of MainContainer and Secondary Container
+- Secondary Container me MovieList and MovieCard ki design di aur scrollable bnaya
+- Secondary Container ko bg-black diya aur black gradient diya
+- MovieList me MovieCard ko loop kra diya
 
 
 
