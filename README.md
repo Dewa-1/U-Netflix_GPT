@@ -36,9 +36,10 @@
 - Now playing movies, Top Rated Movies, Popular Movies, Upcoming movies ki API se data fetch karke different movie List
 - sabke like differnet hooks bnaye aur redux store me store karwaya
 - Made the Browse page wholesome and amazing
-
-
-
+- Implementing GPT search for movie reccomendation
+- Added browserShimmer UI for better UX.
+- Conditional Rendering of pages based on API movies data we get
+- If don't get movie data we just show shimmer UI
 
 # Features
 
