@@ -21,7 +21,7 @@ const VideoBackground = ({backgroundImage, movieId}) => {
 
   useEffect(()=> {
     getMovieVideos();
-  }, [movieId])
+  }, [movieId]);
 
 if (!videotrailerdata) return null;
 

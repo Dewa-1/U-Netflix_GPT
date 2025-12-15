@@ -45,13 +45,14 @@ const Header = () => {
 
 
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-screen flex items-center justify-between">
+    <div className="fixed px-8 py-2 bg-gradient-to-b from-black w-screen flex items-center justify-between z-50">
       <img
         className="w-44"
         src={netflixLogo}
         alt=" NetflixLogo"
       />
       <div className="flex-col place-items-center justify-between">
+    
         <img
           className="w-12 h-12 rounded-[50%] "
           src={user?.photoURL ? user.photoURL : defaultProfileImage}
