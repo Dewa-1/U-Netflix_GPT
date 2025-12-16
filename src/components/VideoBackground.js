@@ -25,7 +25,7 @@ const VideoBackground = ({backgroundImage, movieId}) => {
 
 if (!videotrailerdata) return null;
 
-const {key } = videotrailerdata;
+const {key} = videotrailerdata;
   return (
   <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
   <div className="absolute top-1/2 left-1/2 w-[120%] -translate-x-1/2 -translate-y-1/2">

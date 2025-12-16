@@ -37,6 +37,7 @@
 - sabke like differnet hooks bnaye aur redux store me store karwaya
 - Made the Browse page wholesome and amazing
 - Implementing GPT search for movie reccomendation
+- Added gpt Searchbar with the Header also coming on top 
 - Added browserShimmer UI for better UX.
 - Conditional Rendering of pages based on API movies data we get
 - If don't get movie data we just show shimmer UI
