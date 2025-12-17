@@ -29,7 +29,7 @@ return (
       <GptSearch />
     ) : (
       (!movies.nowPlayingMovies ||       //Uske baad doosra ternary operator lagaya hai jisme mtlb ye hai ki agr abhi tak movies ka data load ni hua to BrowseShimmer dikhana hai
-       !movies.popularMovies ||
+       !movies.popularMovies ||          //gptSearchEnabled false hone par hi ye wala code chalega
        !movies.topRatedMovies ||
        !movies.upcomingMovies) ? (
         <BrowseShimmer />

@@ -8,10 +8,10 @@ import { defaultProfileImage, netflixLogo } from "../utils/constants";
 import { toggleGptSearch } from "../utils/gptSlice";
 
 const Header = () => {
-  const[gptSearchOn, setGptgptSearchOn] = useState(false);
+  
   const user = useSelector((store) => store.user); //Yha se bde redux store se jo user slice hai wha se user ki info le rhe hain
 
-
+const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
 
 
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ const Header = () => {
   };
 
   const handleGptToggle = ()=> {
-    setGptgptSearchOn(!gptSearchOn);
     dispatch(toggleGptSearch());
   }
 
@@ -68,7 +67,7 @@ const Header = () => {
     onClick={handleGptToggle}
     className="bg-purple-600 px-4 py-2 rounded-md text-white mt-2 mx-8"
   >
-    {gptSearchOn ? "GPT Search" : "Home"  }
+    {gptSearchEnabled ? "Home" : "GPT Search"  }
   </button>
 )}
         {user && (
