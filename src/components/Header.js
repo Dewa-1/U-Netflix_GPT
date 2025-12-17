@@ -4,8 +4,9 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { defaultProfileImage, netflixLogo } from "../utils/constants";
+import { defaultProfileImage, netflixLogo, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearch } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/languageSlice";
 
 const Header = () => {
   
@@ -52,6 +53,14 @@ const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
     return () => unsubscribe();
   }, []);
 
+
+  const handleLanguage = (e) => {
+    //yha language change ka logic aayega
+ 
+    dispatch(changeLanguage(e.target.value));    //yha par jo option ki valu hai wo dispatch ho rhi hai jo identifier ki trh defined hai constants.js me
+
+  }
+
   return (
     <div className="fixed px-8 py-2 bg-gradient-to-b from-black w-screen flex items-center justify-between z-50">
       <img className="w-44" src={netflixLogo} alt=" NetflixLogo" />
@@ -63,6 +72,12 @@ const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
           alt="user-icon"
         />
 
+
+      { gptSearchEnabled && <select onChange={handleLanguage}  name="" id="" className="h-10 rounded-lg bg-black text-white p-2">
+        {SUPPORTED_LANGUAGES.map((lang)=> (
+            <option key={lang.identifier} value={lang.identifier} >{lang.name}</option>
+        ) )}
+      </select>}
         
         {user && (
   <button
