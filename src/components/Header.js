@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,9 @@ import { defaultProfileImage, netflixLogo } from "../utils/constants";
 import { toggleGptSearch } from "../utils/gptSlice";
 
 const Header = () => {
+  const[gptSearchOn, setGptgptSearchOn] = useState(false);
   const user = useSelector((store) => store.user); //Yha se bde redux store se jo user slice hai wha se user ki info le rhe hain
+
 
 
 
@@ -27,6 +29,7 @@ const Header = () => {
   };
 
   const handleGptToggle = ()=> {
+    setGptgptSearchOn(!gptSearchOn);
     dispatch(toggleGptSearch());
   }
 
@@ -60,12 +63,14 @@ const Header = () => {
           src={user?.photoURL ? user.photoURL : defaultProfileImage}
           alt="user-icon"
         />
-        {user && <button
-          onClick={handleGptToggle}
-            className="bg-purple-600 px-4 py-2 rounded-md text-white  mt-2 mx-8"
-          >
-            GPT Search
-          </button>}
+        {user && (
+  <button
+    onClick={handleGptToggle}
+    className="bg-purple-600 px-4 py-2 rounded-md text-white mt-2 mx-8"
+  >
+    {gptSearchOn ? "GPT Search" : "Home"  }
+  </button>
+)}
         {user && (
           <button
             onClick={handleSignOut}
