@@ -40,6 +40,7 @@
 - Added gpt Searchbar with the Header also coming on top 
 - Added toggle of home and GPT search with the use of redux store and State variable
 - fixed a bug that sync with redux state to toggle between home and gpt search text
+- Not Adding Multilingual feature in the website
 - Added browserShimmer UI for better UX.
 - Conditional Rendering of pages based on API movies data we get
 - If don't get movie data we just show shimmer UI

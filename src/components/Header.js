@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,6 +62,8 @@ const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
           src={user?.photoURL ? user.photoURL : defaultProfileImage}
           alt="user-icon"
         />
+
+        
         {user && (
   <button
     onClick={handleGptToggle}
