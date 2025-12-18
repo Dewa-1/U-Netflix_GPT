@@ -11,7 +11,9 @@ import BrowseShimmer from './BrowseShimmer';
 import GptSearch from './GptSearch';
 
 const Browse = () => {
-  const movies = useSelector((store)=> store.movies);
+  // const movies = useSelector((store)=> store.movies);
+  const allmovieFetchStatus = useSelector((store)=> store.movies.isLoading);
+
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -26,20 +28,13 @@ return (
     <Header />
 
     {gptSearchEnabled ? (            //Mtlb agr GPT search wala button click hua hai to Header k saath GPT search component dikhana hai
-      <GptSearch />
-    ) : (
-      (!movies.nowPlayingMovies ||       //Uske baad doosra ternary operator lagaya hai jisme mtlb ye hai ki agr abhi tak movies ka data load ni hua to BrowseShimmer dikhana hai
-       !movies.popularMovies ||          //gptSearchEnabled false hone par hi ye wala code chalega
-       !movies.topRatedMovies ||
-       !movies.upcomingMovies) ? (
-        <BrowseShimmer />
-      ) : (                         //Agar movies ka data load ho chuka hai to normal Browse component dikhana hai
-        <>         
-          <MainContainer />                 
-          <SecondaryContainer />
-        </>
-      )
-    )}
+      <GptSearch />                  //kyunki allmovieFetchStatus true hai to mtlb abhi tak movies ka data load ni hua hai to BrowseShimmer dikhana hai
+                                      //agr abhi tak movies ka data load ni hua hai to shimmer dikhana hai
+                                      //kyunki ab movies ka data load ho chuka hai to ab MainContainer and SecondaryContainer dikhana hai
+    ) : allmovieFetchStatus ? <BrowseShimmer /> : <>       
+  <MainContainer />                                     
+  <SecondaryContainer />
+    </> }
   </div>
 );
 }

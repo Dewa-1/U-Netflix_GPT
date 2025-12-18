@@ -8,6 +8,7 @@ const moviesSlice = createSlice({
         popularMovies: null,
         topRatedMovies: null,
         upcomingMovies: null,
+        isLoading: true,          //yha se isLoading agar true hai to mtlb abhi tak movies ka data load ni hua hai
 },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -24,6 +25,8 @@ const moviesSlice = createSlice({
     },
     addUpcomingMovies: (state, action)=> {
       state.upcomingMovies = action.payload;
+      state.isLoading = false;               //jab upcoming movies ka data load ho jata hai to mtlb ab sabhi movies ka data load ho chuka hai
+                                             //ek check pointer ki tarah hai ki saari movies ka data load ho chuka hai
     }
   },  
 }
