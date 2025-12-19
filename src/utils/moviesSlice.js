@@ -8,6 +8,7 @@ const moviesSlice = createSlice({
         popularMovies: null,
         topRatedMovies: null,
         upcomingMovies: null,
+        searchedMovies: null,
         isLoading: true,          //yha se isLoading agar true hai to mtlb abhi tak movies ka data load ni hua hai
 },
   reducers: {
@@ -27,11 +28,14 @@ const moviesSlice = createSlice({
       state.upcomingMovies = action.payload;
       state.isLoading = false;               //jab upcoming movies ka data load ho jata hai to mtlb ab sabhi movies ka data load ho chuka hai
                                              //ek check pointer ki tarah hai ki saari movies ka data load ho chuka hai
-    }
+    },
+     addSearchedMovies: (state, action)=>{
+      state.searchedMovies = action.payload;
+    },
   },  
 }
 );
 
-export const { addNowPlayingMovies, addTrailerVideo, addPopularMovies, addTopRatedMovies, addUpcomingMovies } = moviesSlice.actions;
+export const { addNowPlayingMovies, addTrailerVideo, addPopularMovies, addTopRatedMovies, addUpcomingMovies, addSearchedMovies } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

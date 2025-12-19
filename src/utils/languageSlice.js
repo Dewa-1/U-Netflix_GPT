@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const languageSlice = createSlice({
     name: "language",
     initialState: {
-        selectedLanguage: "en",
+        selectedLanguage: "en",       //container jo selected language ko store karega
     },
     reducers: {
-        changeLanguage: (state, action) => {
-            state.selectedLanguage = action.payload;
+        changeLanguage: (state, action) => {       
+            state.selectedLanguage = action.payload;   //yha par hmara payload me selected language aa jayegi
         },
 
     },

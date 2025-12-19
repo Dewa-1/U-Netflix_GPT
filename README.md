@@ -51,6 +51,7 @@
 - env file me API ko protect kiya taaki expose na ho kyunki github warning deta hai
 - Gpt bar me open ai se data fetch krke dikhaya aur prompt ko clarify kiya
 - console me array of five movies aa rhi hn
+- Gpt se movies aane ke baad hum tmdb me har ek movie search kr rhe hn with the use of Promise.all se
 
 # Features
 
