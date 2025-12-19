@@ -7,6 +7,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { defaultProfileImage, netflixLogo, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearch } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/languageSlice";
+import toast from "react-hot-toast";
 
 const Header = () => {
   
@@ -22,9 +23,16 @@ const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+
+        toast("Signed out successfully", {
+        icon: "👋",
+        duration: 2000,
+      });
+      dispatch(toggleGptSearch()); //signout hote hi false krde gpt search ko taaki wapas browse page pe jaye to normal home page hi dikhe
       })
       .catch((error) => {
         // An error happened.
+        toast.error("Sign out failed");
         navigate("/errorPage");
       });
   };
@@ -73,7 +81,7 @@ const gptSearchEnabled = useSelector((store)=> store.gpt.showGptSearch);
         />
 
 
-      { gptSearchEnabled && <select onChange={handleLanguage}  name="" id="" className="h-10 rounded-lg bg-black text-white p-2">
+      { gptSearchEnabled && user && <select onChange={handleLanguage}  name="" id="" className="h-10 rounded-lg bg-black text-white p-2">
         {SUPPORTED_LANGUAGES.map((lang)=> (
             <option key={lang.identifier} value={lang.identifier} >{lang.name}</option>
         ) )}

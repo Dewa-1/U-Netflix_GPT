@@ -10,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { userProfileImage } from "../utils/constants";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [IsSignInForm, setIsSignInForm] = useState(true);
@@ -35,7 +36,7 @@ const Login = () => {
 
       createUserWithEmailAndPassword(
         auth,
-        email.current.value,           //yha auth ki state change hui pehle uske baad hi onAuthStateChanged chalega
+        email.current.value, //yha auth ki state change hui pehle uske baad hi onAuthStateChanged chalega
         password.current.value
       )
         .then((userCredential) => {
@@ -44,12 +45,11 @@ const Login = () => {
 
           updateProfile(user, {
             displayName: username.current.value,
-            photoURL:
-              userProfileImage,
+            photoURL: userProfileImage,
           })
             .then(() => {
-              const { uid, email, displayName, photoURL } = auth.currentUser;   //Mtlb pehle createUserWithEmailAndPassword se user create hoga uske baad updateProfile chalega
-                                                                                //auth.currentUser se updated user ki info milegi   
+              const { uid, email, displayName, photoURL } = auth.currentUser; //Mtlb pehle createUserWithEmailAndPassword se user create hoga uske baad updateProfile chalega
+              //auth.currentUser se updated user ki info milegi
               dispatch(addUser({ uid, email, displayName, photoURL }));
             })
             .catch((error) => {
@@ -62,14 +62,21 @@ const Login = () => {
           //   uid: user.uid,
           //   email: user.email,
           // }));
-          alert("User registered successfully");
+          toast.success("Account created successfully! Welcome to Netflix 🎬", {
+            icon: "🔥",
+            duration: 2500,
+          });
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(`${errorCode} - ${errorMessage}`);
-          alert("Error signing up: " + errorMessage);
+          toast.error("Something went wrong. Please try again.", {
+            icon: "⚠️",
+            duration: 3000,
+          });
+
           // ..
         });
     }
@@ -83,14 +90,20 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          alert("User signed in successfully");
+          toast.success("Welcome back to Netflix 🎬", {
+            icon: "🔥",
+            duration: 2500,
+          });
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(`${errorCode} - ${errorMessage}`);
-          alert("Error signing in: " + errorMessage);
+          toast.error("Something went wrong. Please try again.", {
+            icon: "⚠️",
+            duration: 3000,
+          });
         });
     }
   };

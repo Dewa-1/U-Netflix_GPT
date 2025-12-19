@@ -3,7 +3,8 @@ import Browse from "./Browse";
 import Login from "./Login";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import GptSearch from "./GptSearch";
+import { Toaster } from "react-hot-toast";
+
 
 
 const Body = () => {
@@ -23,6 +24,16 @@ const Body = () => {
 
   return (
     <div>
+       <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: "#141414",
+            color: "#fff",
+            border: "1px solid #333",
+          },
+        }}
+      />
       <RouterProvider router={appRouter} />
     </div>
   );

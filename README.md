@@ -45,7 +45,12 @@
 - Conditional Rendering of pages based on API movies data we get
 - If don't get movie data we just show shimmer UI
 - Flickering UI ka bug fix kiya jisme jab tak saari movies ka adata na aa jaye tab tak browse page me conditional render lgao
-- movieslice me isLoading ka ek state variable le liya jisse woh ek pointer ki trh kaam karta hai ki jb tak saari API's se data na aaye tab tak shimmer dikhao nhi to fir main container and secondary container rednder kardo.
+- movieslice me isLoading ka ek state variable le liya jisse woh ek pointer ki trh kaam karta hai ki jb tak saari API's se data  na aaye tab tak shimmer dikhao nhi to fir main container and secondary container rednder kardo.
+- Bug Fix: Gpt search page se signout kiya to login krne par main browse dikhe isliye fix kiya(pehle gpt search page visible tha)
+- Added toast on signup, signin, signout
+- env file me API ko protect kiya taaki expose na ho kyunki github warning deta hai
+- Gpt bar me open ai se data fetch krke dikhaya aur prompt ko clarify kiya
+- console me array of five movies aa rhi hn
 
 # Features
 
