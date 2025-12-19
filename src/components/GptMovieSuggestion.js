@@ -1,14 +1,27 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import MovieCard from './MovieCard';
+import BrowseShimmer from './BrowseShimmer';
 
 const GptMovieSuggestion = () => {
 
-  const movies = useSelector((store)=> store.movies.searchedMovies);
+  const sugestedMovies = useSelector((store)=> store.movies.searchedMovies);    //Redux store se data lekar aur moviesList ki trh isko bhi show krwa denge
+  
   
   return (
-    <div className='flex items-center justify-center mt-5 text-white bg-black bg-gradient-to-t from-black/80 to-black/20 opacity-80'>
-        Welcome to the Suggestion List
-    </div>
+ <div className='p-8'>
+  <h1 className="text-xl font-bold text-white">
+        Suggested Movies
+      </h1>
+    <div className='flex justify-start gap-x-4 gap-y-6 overflow-x-auto no-scrollbar pt-6 shadow-lg rounded-lg'>   
+   {sugestedMovies?.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            posterPath={movie.poster_path}
+          />
+        ))}
+   </div>
+ </div>
   )
 }
 

@@ -16,7 +16,7 @@ const GptSearchBar = () => {
  const searchMovieTMDB = async(movie)=> {
   const tmdbData  = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`, API_options);
   const tmdbResponse = await tmdbData.json();
-  return tmdbResponse.results[0];
+  return tmdbResponse.results;
   
  }
 
@@ -50,7 +50,7 @@ Rules:
 
         const PromiseMovieArray = moviesListGPT.map((movie)=> searchMovieTMDB(movie));  //har ek movie jo gpt se aayi hai usko tmdb me search kiya
         const FinalMoviesList =  await Promise.all(PromiseMovieArray); 
-        dispatch(addSearchedMovies(FinalMoviesList));                                               
+        dispatch(addSearchedMovies(FinalMoviesList[0]));                                               
     }  
 
  

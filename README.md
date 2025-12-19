@@ -52,6 +52,9 @@
 - Gpt bar me open ai se data fetch krke dikhaya aur prompt ko clarify kiya
 - console me array of five movies aa rhi hn
 - Gpt se movies aane ke baad hum tmdb me har ek movie search kr rhe hn with the use of Promise.all se
+- ShowMovieSuggestions me suggested movies show kri hain
+- Just Like humne moviealaist show ki thi wohi movieCard and MovieList style use ki hai
+
 
 # Features
 
