@@ -55,6 +55,10 @@
 - ShowMovieSuggestions me suggested movies show kri hain
 - Just Like humne moviealaist show ki thi wohi movieCard and MovieList style use ki hai
 - Aur Movies Add ki humne total no. of movies increased
+- Added dummy response of movieList API to different jsonData files for offline functionality(Can be made dynamic just with a comment)
+- Fixed the gptSearch Page by fixed positioning of the page so that every movie cards show in the the page and no overflow
+- Added the Names of the Movies to show on the Page
+
 
 
 # Features

@@ -3,7 +3,7 @@ import { API_options } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrailerVideo } from '../utils/moviesSlice';
 
-const VideoBackground = ({backgroundImage, movieId}) => {
+const VideoBackground = ({movieId}) => {
   const dispatch = useDispatch();
 
   const videotrailerdata = useSelector((store)=>store.movies?.trailerVideo);
@@ -13,8 +13,8 @@ const VideoBackground = ({backgroundImage, movieId}) => {
     const json = await data.json();
     // console.log(json.results);           //yha 4 videos ka array aaega
 
-    const filterData = json.results.filter((video)=>video.type=== "Trailer"); 
-    const trailer = filterData.length ? filterData[0]: json.results[0];
+    const filterData = json.results.filter((video)=>video.type=== "Trailer"); //condtion lgayi fallback k liye ki agar ye nhi to definetely koi play ho jaye
+    const trailer = filterData.length ? filterData[0]: json.results[0]; //yha bhi syd do Trailer aa skte hn isliye humne condition di hai
     // console.log(trailer);
     dispatch(addTrailerVideo(trailer));
   }
