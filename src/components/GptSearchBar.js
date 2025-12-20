@@ -45,12 +45,13 @@ Rules:
       const resultText = response.output_text;
       const moviesListGPT = JSON.parse(resultText); //yha par humne JSON.parse kiya kyunki humne prompt me bola tha ki output ek valid JSON array hona chahiye
 
-      console.log("Recommended Movies:", moviesListGPT);      //Array of movies aaega yha
+      // console.log("Recommended Movies:", moviesListGPT);      //Array of movies aaega yha
       // Example: ["Inception", "Tenet", "Looper", "Source Code", "Predestination"]
 
         const PromiseMovieArray = moviesListGPT.map((movie)=> searchMovieTMDB(movie));  //har ek movie jo gpt se aayi hai usko tmdb me search kiya
         const FinalMoviesList =  await Promise.all(PromiseMovieArray); 
-        dispatch(addSearchedMovies(FinalMoviesList[0]));                                               
+        // console.log(FinalMoviesList);    // 5 Array of Array aaega , aur har array me kuch 10-20 movies hongi
+        dispatch(addSearchedMovies(FinalMoviesList));                                               
     }  
 
  
