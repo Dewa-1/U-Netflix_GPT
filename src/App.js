@@ -3,7 +3,7 @@ import Body from "./components/Body";
 import appStore from "./utils/appStore";
 
 
-function App() {
+const App = () => {
   return (
    <Provider store={appStore}>
      <Body />

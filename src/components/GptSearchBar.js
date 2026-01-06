@@ -29,6 +29,9 @@ Recommend exactly 5 movies based on this input:
 "${searchText.current.value}"
 
 Rules:
+- Movies MUST have IMDb rating >= 7.5
+- Use your best factual knowledge only
+- Only well-known, critically acclaimed movies
 - Only movie names
 - No explanations
 - No numbering
