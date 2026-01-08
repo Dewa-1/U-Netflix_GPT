@@ -59,7 +59,7 @@
 - Fixed the gptSearch Page by fixed positioning of the page so that every movie cards show in the the page and no overflow
 - Added the Names of the Movies to show on the Page
 - Show movies having IMDB rating >= 7.5 
-
+- Fixed the bug: Homepage se jb signout kr rhe the to showGpt false !false = true ho jata tha aur gpt search page aa jata tha. To fix kr diya
 
 
 # Features
