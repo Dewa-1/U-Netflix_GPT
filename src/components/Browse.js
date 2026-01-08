@@ -32,7 +32,7 @@ return (
                                       //agr abhi tak movies ka data load ni hua hai to shimmer dikhana hai
                                       //kyunki ab movies ka data load ho chuka hai to ab MainContainer and SecondaryContainer dikhana hai
     ) : allmovieFetchStatus ? <BrowseShimmer /> : <>       
-  <MainContainer />                                     
+  <MainContainer />                                                          
   <SecondaryContainer />
     </> }
   </div>

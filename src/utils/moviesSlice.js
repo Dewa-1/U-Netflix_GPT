@@ -12,7 +12,7 @@ const moviesSlice = createSlice({
         isLoading: true,          //yha se isLoading agar true hai to mtlb abhi tak movies ka data load ni hua hai
 },
   reducers: {
-    addNowPlayingMovies: (state, action) => {
+    addNowPlayingMovies: (state, action) => {      //Ye actions hai jiski madad se hum dipatch krte hn actions ko
         state.nowPlayingMovies = action.payload;
     },
     addTrailerVideo: (state, action) => {

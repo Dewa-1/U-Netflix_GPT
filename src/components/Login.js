@@ -26,7 +26,7 @@ const Login = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
 
-    //Mtlb ki agar message aa rha hai to signIn/signup nahi hoga kyunki validation fail hua hai
+    //Mtlb ki agar message aa rha hai to signIn/signUp nahi hoga kyunki validation fail hua hai
     if (message) return;
 
     //SIGNUP LOGIC YHA AAEGA
@@ -50,7 +50,7 @@ const Login = () => {
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser; //Mtlb pehle createUserWithEmailAndPassword se user create hoga uske baad updateProfile chalega
               //auth.currentUser se updated user ki info milegi
-              dispatch(addUser({ uid, email, displayName, photoURL }));
+              // dispatch(addUser({ uid, email, displayName, photoURL }));
             })
             .catch((error) => {
               setErrorMessage(error.message);
