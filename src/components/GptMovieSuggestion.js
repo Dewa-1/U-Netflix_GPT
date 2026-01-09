@@ -7,13 +7,13 @@ const GptMovieSuggestion = () => {
     (store) => store.movies.searchedMovies
   );
 
-  if (!suggestedMovies) return null;
+  if (!suggestedMovies) return null;   // 5 Array of Array aaega , aur har array me kuch 2-20 movies hongi
 
   return (
-    <div className="p-8 ">
+    <div className="p-8">
       <div className="flex flex-wrap gap-x-6 overflow-x-auto no-scrollbar pt-3">
-        {suggestedMovies.map((movieArray) =>
-          movieArray.map((singleMovie) => (
+        {suggestedMovies.map((movieArray) =>         //bda array or arrays
+          movieArray.map((singleMovie) => (         
             <div
               key={singleMovie.id}
               className="flex flex-col-reverse gap-y-5 items-center w-40"

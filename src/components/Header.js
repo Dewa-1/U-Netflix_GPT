@@ -76,7 +76,7 @@ const Header = () => {
 
       <div className="flex-col place-items-center justify-between">
         <img
-          className="w-12 h-12 rounded-[50%] "
+          className="w-12 h-12 rounded-[50%]"
           src={user?.photoURL ? user.photoURL : defaultProfileImage}       //mtlb agar user signIn ho gya to updated photo nhi to default photo
           alt="user-icon"
         />
@@ -88,8 +88,8 @@ const Header = () => {
             id=""
             className="h-10 rounded-lg bg-black text-white p-2"
           >
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
+            {SUPPORTED_LANGUAGES.map((lang) => (     //Mtlb yha par jo languages ka dropdown button hai uske liye hai ye aur yha se value property redux store me jaegi
+              <option key={lang.identifier} value={lang.identifier}>   
                 {lang.name}
               </option>
             ))}

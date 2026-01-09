@@ -17,6 +17,8 @@ const useNowPlayingMovies = () => {
     // const jsonData = await data.json();
 
   //  dispatch(addNowPlayingMovies(jsonData?.results));
+
+  
     ////For Offline Connectivity
     dispatch(addNowPlayingMovies(nowPlayingJsonData?.results));    //jo movies ka data aaya wha ab redux me store krwa rhe hain
   

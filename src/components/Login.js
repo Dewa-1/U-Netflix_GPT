@@ -50,7 +50,7 @@ const Login = () => {
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser; //Mtlb pehle createUserWithEmailAndPassword se user create hoga uske baad updateProfile chalega
               //auth.currentUser se updated user ki info milegi
-              // dispatch(addUser({ uid, email, displayName, photoURL }));
+              
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -156,7 +156,7 @@ const Login = () => {
                 ref={phoneNumber}
                 className="rounded-md  text-gray-100 w-[100%] h-15 p-4 bg-black opacity-80 border-x-2 border-y-2"
                 type="text"
-                placeholder=" Phone number"
+                placeholder="Phone number"
               />
             </div>
           )}

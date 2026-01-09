@@ -11,7 +11,7 @@ const GptSearchBar = () => {
 
   const dispatch = useDispatch();
 
-  const selectedLang = useSelector((store) => store.language.selectedLanguage); //yha se hum seleceted language le rhe hn for example "en", "hindi" aaega
+  const selectedLang = useSelector((store) => store.language.selectedLanguage); //yha se hum seleceted language le rhe hn for example "en", "hindi" aaega value aaegi
 
  const searchMovieTMDB = async(movie)=> {
   const tmdbData  = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`, API_options);
@@ -87,7 +87,7 @@ Rules:
         <input
           ref={searchText}
           type="text"
-          placeholder={lang[selectedLang].gptSearchPlaceholder}
+          placeholder={lang[selectedLang].gptSearchPlaceholder}        //yha redux store se ex:- "en" liya to languageConstants se search or gptPlaceholder yha par implement kr dengew
           className="h-12 bg-black text-white rounded-lg mx-4 px-3 w-96"
         />
         <button

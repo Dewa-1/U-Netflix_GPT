@@ -12,7 +12,7 @@ import GptSearch from './GptSearch';
 
 const Browse = () => {
   // const movies = useSelector((store)=> store.movies);
-  const allmovieFetchStatus = useSelector((store)=> store.movies.isLoading);
+  const allmovieFetchStatus = useSelector((store)=> store.movies.isLoading); //mtlb yha agar true hai to movies abhi poori aayi nhi hain
 
   useNowPlayingMovies();
   usePopularMovies();
