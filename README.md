@@ -60,6 +60,7 @@
 - Added the Names of the Movies to show on the Page
 - Show movies having IMDB rating >= 7.5 
 - Fixed the bug: Homepage se jb signout kr rhe the to showGpt false !false = true ho jata tha aur gpt search page aa jata tha. To fix kr diya
+- Bug Fix: Searched Movies ko signout hote hi null kr diya taaki hmara searched data koi dekh na ske
 
 
 # Features

@@ -12,6 +12,7 @@ import {
 import { resetGptSearch, toggleGptSearch } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/languageSlice";
 import toast from "react-hot-toast";
+import { resetSearchedMovies } from "../utils/moviesSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user); //Yha se bde redux store se jo user slice hai wha se user ki info le rhe hain
@@ -31,6 +32,7 @@ const Header = () => {
           duration: 2000,
         });
         dispatch(resetGptSearch()); //signout hote hi false krde gpt search ko taaki wapas browse page pe jaye to normal home page hi dikhe
+        dispatch(resetSearchedMovies());
       })
       .catch((error) => {
         // An error happened.

@@ -32,10 +32,13 @@ const moviesSlice = createSlice({
      addSearchedMovies: (state, action)=>{
       state.searchedMovies = action.payload;
     },
+    resetSearchedMovies: (state) => {
+             state.searchedMovies = null;
+    },
   },  
 }
 );
 
-export const { addNowPlayingMovies, addTrailerVideo, addPopularMovies, addTopRatedMovies, addUpcomingMovies, addSearchedMovies } = moviesSlice.actions;
+export const { addNowPlayingMovies, resetSearchedMovies,  addTrailerVideo, addPopularMovies, addTopRatedMovies, addUpcomingMovies, addSearchedMovies } = moviesSlice.actions;
 
 export default moviesSlice.reducer;
