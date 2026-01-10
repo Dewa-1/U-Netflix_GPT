@@ -13,7 +13,7 @@ const GptMovieSuggestion = () => {
     <div className="p-8">
       <div className="flex flex-wrap gap-x-6 overflow-x-auto no-scrollbar pt-3">
         {suggestedMovies.map((movieArray) =>         //bda array or arrays
-          movieArray.map((singleMovie) => (         
+          movieArray.filter((movie)=> movie.posterPath || movie.backdrop_path).map((singleMovie) => (   //filtering based on image available      
             <div
               key={singleMovie.id}
               className="flex flex-col-reverse gap-y-5 items-center w-40"
@@ -23,7 +23,7 @@ const GptMovieSuggestion = () => {
                 {singleMovie.original_title}
               </h1>
 
-              <MovieCard posterPath={singleMovie.poster_path} />
+              <MovieCard posterPath={singleMovie.poster_path}/>
             </div>
           ))
         )}

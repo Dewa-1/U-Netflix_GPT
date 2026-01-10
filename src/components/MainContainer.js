@@ -17,7 +17,7 @@ const MainContainer = () => {
 
   return (
     <div className='flex items-center h-full relative'>
-      <VideoTitle title={original_title} overview={overview} posterImage={poster_path} />
+      <VideoTitle title={original_title} overview={overview} posterImage={backdrop_path} />
       <VideoBackground backgroundImage={backdrop_path} movieId={id}   />
     </div>
   )
