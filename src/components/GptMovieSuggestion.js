@@ -23,7 +23,7 @@ const GptMovieSuggestion = () => {
                 {singleMovie.original_title}
               </h1>
 
-              <MovieCard posterPath={singleMovie.poster_path}/>
+              <MovieCard posterPath={singleMovie.poster_path} posterPath2={singleMovie.backdrop_path}/>
             </div>
           ))
         )}
