@@ -61,7 +61,8 @@
 - Show movies having IMDB rating >= 7.5 
 - Fixed the bug: Homepage se jb signout kr rhe the to showGpt false !false = true ho jata tha aur gpt search page aa jata tha. To fix kr diya
 - Bug Fix: Searched Movies ko signout hote hi null kr diya taaki hmara searched data koi dekh na ske
-
+- Bug Fix: No posterpath || backdroppath then apply filter and only return if it has image
+- Added Offline conectivity by adding try catch in movies lists
 
 # Features
 
