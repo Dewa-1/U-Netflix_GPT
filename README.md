@@ -63,6 +63,7 @@
 - Bug Fix: Searched Movies ko signout hote hi null kr diya taaki hmara searched data koi dekh na ske
 - Bug Fix: No posterpath || backdroppath then apply filter and only return if it has image
 - Added Offline conectivity by adding try catch in movies lists
+- Added vote_average rating filter feature in showing searched movies in GPT Search
 
 # Features
 
