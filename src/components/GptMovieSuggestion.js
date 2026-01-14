@@ -11,9 +11,10 @@ const GptMovieSuggestion = () => {
 
   return (
     <div className="p-8">
-      <div className="flex flex-wrap gap-x-6 overflow-x-auto no-scrollbar pt-3">
+      <div className="flex flex-wrap gap-x-6 overflow-x-auto no-scrollbar pt-3 bg-black opacity-80 px-2 py-2 w-full">
         {suggestedMovies.map((movieArray) =>         //bda array or arrays
-          movieArray.filter((movie)=> movie.posterPath || movie.backdrop_path).map((singleMovie) => (   //filtering based on image available      
+          movieArray.filter((movie)=> (movie.posterPath || movie.backdrop_path) && movie.
+vote_average >= 7.5).map((singleMovie) => (   //filtering based on image available      
             <div
               key={singleMovie.id}
               className="flex flex-col-reverse gap-y-5 items-center w-40"
