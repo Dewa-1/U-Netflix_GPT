@@ -64,6 +64,8 @@
 - Bug Fix: No posterpath || backdroppath then apply filter and only return if it has image
 - Added Offline conectivity by adding try catch in movies lists
 - Added vote_average rating filter feature in showing searched movies in GPT Search
+- Loading toast while loading movies and then showing.
+- Reset searched movies after we move back from gptSearch page to home so our gptSearch page looks normal.
 
 # Features
 

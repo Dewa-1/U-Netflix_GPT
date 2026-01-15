@@ -4,7 +4,7 @@ import lang from "../utils/languageConstants";
 import openai from "../utils/openai";
 import toast from "react-hot-toast";
 import { API_options } from "../utils/constants";
-import { addSearchedMovies } from "../utils/moviesSlice";
+import { addSearchedMovies, startSearchedLoading } from "../utils/moviesSlice";
 
 const GptSearchBar = () => {
   const searchText = useRef(null);
@@ -23,6 +23,15 @@ const GptSearchBar = () => {
 
   const handleGptSearchClick = async () => {
     if (!searchText.current.value) return;
+     
+    dispatch(startSearchedLoading());
+
+
+    const toastId = toast.loading("Fetching Movie Recommendations...");  //TLoading toast dikhega jab tak data load ho rha hai
+
+    
+    // 
+
 
     const prompt = `
 Recommend exactly 5 movies based on this input:
@@ -51,7 +60,9 @@ Rules:
         const PromiseMovieArray = moviesListGPT.map((movie)=> searchMovieTMDB(movie));  //har ek movie jo gpt se aayi hai usko tmdb me search kiya
         const FinalMoviesList =  await Promise.all(PromiseMovieArray); 
         // console.log(FinalMoviesList);    // 5 Array of Array aaega , aur har array me kuch 10-20 movies hongi
-        dispatch(addSearchedMovies(FinalMoviesList));                                               
+        dispatch(addSearchedMovies(FinalMoviesList)); 
+        
+        toast.success("Movies ready 🎬", { id: toastId });
     }  
 
  

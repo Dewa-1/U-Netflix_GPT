@@ -22,6 +22,10 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+    if(!gptSearchEnabled) {
+    dispatch(resetSearchedMovies());   //Mtlb ki agar gpt search band hai to searched movies ko khali kardo taaki homw page se wapis gpt page pr jb jayenge to normal gpt page dikhega
+  }
+
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -103,7 +107,7 @@ const Header = () => {
             onClick={handleGptToggle}
             className="bg-purple-600 px-4 py-2 rounded-md text-white mt-2 mx-8"
           >
-            {gptSearchEnabled ? "Home" : "GPT Search"}     
+            {gptSearchEnabled ? "Home" : "GPT Search"}   
           </button>
         )}
         {user && (
