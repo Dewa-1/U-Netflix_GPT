@@ -16,7 +16,7 @@ const MainContainer = () => {
     const{original_title, backdrop_path,poster_path, overview, id} = randomMainMovie;    
 
   return (
-    <div className='flex items-center h-full relative'>
+    <div className='flex items-center h-full '>
       <VideoTitle title={original_title} overview={overview} posterImage={backdrop_path} />
       <VideoBackground backgroundImage={backdrop_path} movieId={id}   />
     </div>

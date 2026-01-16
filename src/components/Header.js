@@ -22,8 +22,8 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-    if(!gptSearchEnabled) {
-    dispatch(resetSearchedMovies());   //Mtlb ki agar gpt search band hai to searched movies ko khali kardo taaki homw page se wapis gpt page pr jb jayenge to normal gpt page dikhega
+  if (!gptSearchEnabled) {
+    dispatch(resetSearchedMovies()); //Mtlb ki agar gpt search band hai to searched movies ko khali kardo taaki homw page se wapis gpt page pr jb jayenge to normal gpt page dikhega
   }
 
   const handleSignOut = () => {
@@ -77,47 +77,66 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed px-8 py-2 bg-gradient-to-b from-black w-screen flex items-center justify-between z-50">
-      <img className="w-44" src={netflixLogo} alt=" NetflixLogo" />
-
-      <div className="flex-col place-items-center justify-between">
+    <div className="fixed px-8 py-2 bg-gradient-to-b from-black w-full flex items-center justify-between z-50">
+      <div>
         <img
-          className="w-12 h-12 rounded-[50%]"
-          src={user?.photoURL ? user.photoURL : defaultProfileImage}       //mtlb agar user signIn ho gya to updated photo nhi to default photo
-          alt="user-icon"
+          className="w-20 sm:w-28 md:w-36 lg:w-44"
+          src={netflixLogo}
+          alt=" NetflixLogo"
         />
+      </div>
 
-        {gptSearchEnabled && user && (               //Mtlb agar user signIn ho aur gptSearch(True) pr click kiya ho to
-          <select                   
-            onChange={handleLanguage}
-            name=""
-            id=""
-            className="h-10 rounded-lg bg-black text-white p-2"
-          >
-            {SUPPORTED_LANGUAGES.map((lang) => (     //Mtlb yha par jo languages ka dropdown button hai uske liye hai ye aur yha se value property redux store me jaegi
-              <option key={lang.identifier} value={lang.identifier}>   
-                {lang.name}
-              </option>
-            ))}
-          </select>
-        )}
+      <div className="flex flex-row-reverse  items-end ">
+        <div className="flex flex-col items-center">
+          <div>
+            {/*User Profile and Signout Button*/}
+            <img
+              className="w-5 sm:w-8 md:w-10 lg:w-12 h-auto rounded-full"
+              src={user?.photoURL ? user.photoURL : defaultProfileImage} //mtlb agar user signIn ho gya to updated photo nhi to default photo
+              alt="user-icon"
+            />
+          </div>
 
-        {user && (
-          <button
-            onClick={handleGptToggle}
-            className="bg-purple-600 px-4 py-2 rounded-md text-white mt-2 mx-8"
-          >
-            {gptSearchEnabled ? "Home" : "GPT Search"}   
-          </button>
-        )}
-        {user && (
-          <button
-            onClick={handleSignOut}
-            className="bg-red-600 px-4 py-2 rounded-md text-white mt-2"
-          >
-            Sign Out
-          </button>
-        )}
+          {user && (
+            <button
+              onClick={handleSignOut}
+              className="bg-red-600 px-2 sm:px-4 py-1 text:xs sm:text-sm md:text-base lg:text-lg sm:py-2 rounded-md text-white mt-1 sm:mt-2"
+            >
+              Logout
+            </button>
+          )}
+        </div>
+
+        <div>
+          {/* GPT Search wali button*/}
+          {gptSearchEnabled &&
+            user && ( //Mtlb agar user signIn ho aur gptSearch(True) pr click kiya ho to
+              <select
+                onChange={handleLanguage}
+                name=""
+                id=""
+                className="h-10 rounded-lg bg-black text-white p-2"
+              >
+                {SUPPORTED_LANGUAGES.map(
+                  (
+                    lang //Mtlb yha par jo languages ka dropdown button hai uske liye hai ye aur yha se value property redux store me jaegi
+                  ) => (
+                    <option key={lang.identifier} value={lang.identifier}>
+                      {lang.name}
+                    </option>
+                  )
+                )}
+              </select>
+            )}
+          {user && (
+            <button
+              onClick={handleGptToggle}
+              className="bg-purple-600 px-4 py-2 text:xs sm:text-sm md:text-base lg:text-lg rounded-md text-white mt-auto mx-2 sm:mx-4 md:mx-8"
+            >
+              {gptSearchEnabled ? "Home" : "GPT"}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

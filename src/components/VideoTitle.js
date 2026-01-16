@@ -4,33 +4,33 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 const VideoTitle = ({ title, overview, posterImage }) => {
   return (
-    <div className="pt-36 px-10 w-1/3 ">
-      <div className="my-10">
+    <div className="w-full md: w-1/2 lg:w-1/3 px-4 sm:px-6 lg: px-10 pt-24 sm:pt-28 md:pt-36">
+      <div className="mb-6">
         <img
-          className="w-56 bg-gradient-to-b from-black rounded-md border-none outline-none h-28"
+          className="w-40 sm:w-48 md:w-56 bg-gradient-to-b from-black rounded-md border-none outline-none h-auto"
           src={`https://image.tmdb.org/t/p/original${posterImage}`}
           alt="Poster"
         />
       </div>
 
-      <h1 className="text-6xl font-bold break-words text-white line-clamp-2">
+      <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white line-clamp-2">
         {title}
       </h1>
       <div>
-        <p className="font-bolder text-lg py-6 text-white  line-clamp-4">
+        <p className="font-bolder text-sm sm:text-base md:text-lg py-4 sm:py-6 text-white  line-clamp-3 sm:line-clamp-4">
           {overview}
         </p>
       </div>
-      <div className="flex gap-4 mt-4">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4"> {/*Mtlb choti screen k liye pehle define kro uske bad badi screen k liye*/}
         {/* Play Button */}
         <button className="flex items-center gap-2 bg-white text-black px-6 py-2 rounded-md font-bold hover:bg-gray-200 transition">
-          <FaPlay size={20} />
+          <FaPlay size={18} />
           Play
         </button>
 
         {/* More Info Button */}
         <button className="flex items-center gap-2 bg-gray-700 bg-opacity-80 text-white px-6 py-2 rounded-md font-bold hover:bg-gray-600 transition">
-          <IoIosInformationCircleOutline size={24} />
+          <IoIosInformationCircleOutline size={22} />
           More Info
         </button>
       </div>

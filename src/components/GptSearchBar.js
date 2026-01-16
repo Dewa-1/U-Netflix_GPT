@@ -62,7 +62,9 @@ Rules:
         // console.log(FinalMoviesList);    // 5 Array of Array aaega , aur har array me kuch 10-20 movies hongi
         dispatch(addSearchedMovies(FinalMoviesList)); 
         
-        toast.success("Movies ready 🎬", { id: toastId });
+        toast.success("Movies ready 🎬", { id: toastId,
+          duration: 3000
+         });
     }  
 
  
@@ -87,16 +89,16 @@ Rules:
   };
 
   return (
-    <div className="pt-24 flex items-center justify-center">
+    <div className="pt-14 sm:pt-16 md:pt-20 lg:pt-24 flex items-center justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="bg-black bg-gradient-to-tr from-black rounded-lg p-2 flex items-center border-2 border-white border-solid"
+        className="bg-black bg-gradient-to-tr from-black rounded-lg p-2 flex items-center border-2 border-white border-solid mt-7 sm:mt-10 md:mt-14 lg:mt-16"
       >
         <input
           ref={searchText}
           type="text"
           placeholder={lang[selectedLang].gptSearchPlaceholder}        //yha redux store se ex:- "en" liya to languageConstants se search or gptPlaceholder yha par implement kr dengew
-          className="h-12 bg-black text-white rounded-lg mx-4 px-3 w-96"
+          className="w-32 sm:w-52 md:w-72 lg:w-96 h-auto bg-black text-xs sm:text-sm md:text-base lg:text-lg text-white rounded-lg mx-2 sm:mx-3 md:mx-4 px-5 "
         />
         <button
           onClick={handleGptSearchClick}

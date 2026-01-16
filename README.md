@@ -66,6 +66,8 @@
 - Added vote_average rating filter feature in showing searched movies in GPT Search
 - Loading toast while loading movies and then showing.
 - Reset searched movies after we move back from gptSearch page to home so our gptSearch page looks normal.
+- Added secret data in env file
+- Done a little of responsive design but still left
 
 # Features
 
