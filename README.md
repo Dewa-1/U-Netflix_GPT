@@ -68,6 +68,8 @@
 - Reset searched movies after we move back from gptSearch page to home so our gptSearch page looks normal.
 - Added secret data in env file
 - Done a little of responsive design but still left
+- Made Header Responsive, Videotitle overview hidden on small screen sizes.
+- Adjusted the width of VideoBackground playing
 
 # Features
 

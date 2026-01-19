@@ -98,11 +98,11 @@ Rules:
           ref={searchText}
           type="text"
           placeholder={lang[selectedLang].gptSearchPlaceholder}        //yha redux store se ex:- "en" liya to languageConstants se search or gptPlaceholder yha par implement kr dengew
-          className="w-32 sm:w-52 md:w-72 lg:w-96 h-auto bg-black text-xs sm:text-sm md:text-base lg:text-lg text-white rounded-lg mx-2 sm:mx-3 md:mx-4 px-5 "
+          className="w-32 sm:w-52 md:w-72 lg:w-96  bg-black text-xs sm:text-sm md:text-base lg:text-lg text-white rounded-lg mx-2 sm:mx-3 md:mx-4 px-5 "
         />
         <button
           onClick={handleGptSearchClick}
-          className="bg-red-600 px-4 h-12 py-2 rounded-lg text-white mt-2"
+          className="bg-red-600 px-4 py-2 rounded-lg text-white mt-2"
         >
           {lang[selectedLang].search}
         </button>

@@ -16,9 +16,9 @@ const MainContainer = () => {
     const{original_title, backdrop_path,poster_path, overview, id} = randomMainMovie;    
 
   return (
-    <div className='flex items-center h-full '>
+    <div className='relative w-full h-screen overflow-hidden'>
+       <VideoBackground backgroundImage={backdrop_path} movieId={id}   />
       <VideoTitle title={original_title} overview={overview} posterImage={backdrop_path} />
-      <VideoBackground backgroundImage={backdrop_path} movieId={id}   />
     </div>
   )
 }

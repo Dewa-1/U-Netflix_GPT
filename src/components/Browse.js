@@ -24,7 +24,7 @@ const Browse = () => {
 
 
 return (
-  <div className="w-screen min-h-screen">
+  <div className="w-full min-h-full">
     <Header />
 
     {gptSearchEnabled ? (            //Mtlb agr GPT search wala button click hua hai to Header k saath GPT search component dikhana hai

@@ -27,14 +27,14 @@ if (!videotrailerdata) return null;
 
 const {key} = videotrailerdata;
   return (
-  <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+  <div className="absolute inset-0 -z-50">
   <div className="absolute top-1/2 left-1/2 w-[120%] -translate-x-1/2 -translate-y-1/2">
     <iframe
       className="w-full h-full aspect-video"
       src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0`}
       title="YouTube video player"
       frameBorder="0"
-      allow="autoplay; encrypted-media"
+      allow="autoplay;autoplay; encrypted-media; picture-in-picture; fullscreen"
       allowFullScreen
     />
   </div>
