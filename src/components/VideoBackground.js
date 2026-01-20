@@ -31,7 +31,7 @@ const {key} = videotrailerdata;
   <div className="absolute top-1/2 left-1/2 w-[120%] -translate-x-1/2 -translate-y-1/2">
     <iframe
       className="w-full h-full aspect-video"
-      src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0`}
+      src={`https://www.youtube.com/embed/${key}?autoplay=1&mute=0&controls=0&showinfo=0&rel=0`}
       title="YouTube video player"
       frameBorder="0"
       allow="autoplay;autoplay; encrypted-media; picture-in-picture; fullscreen"

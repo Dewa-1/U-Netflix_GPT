@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
+import { useNavigate } from "react-router-dom";
 
 const GptMovieSuggestion = () => {
   const suggestedMovies = useSelector((store) => store.movies.searchedMovies);
+
+  const navigate = useNavigate();
 
   if (!suggestedMovies) return null; // 5 Array of Array aaega , aur har array me kuch 2-20 movies hongi
 
@@ -25,6 +28,7 @@ const GptMovieSuggestion = () => {
                 ) => (
                   <div
                     key={singleMovie.id}
+                     onClick={() => navigate(`/movie/${singleMovie.id}`)}
                     className="flex flex-col-reverse  gap-y-5 h-full items-center w-32 sm:w-36 md:w-40 lg:w-44 mb-6 rounded-lg"
                   >
                     {/*  Movie Title */}

@@ -4,8 +4,7 @@ import Login from "./Login";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
-
+import MovieDetail from "./MovieDetail";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -15,16 +14,17 @@ const Body = () => {
     },
     {
       path: "/browse",
-      element: (<Browse />),
+      element: <Browse />,
     },
-    
+    {
+      path: "/movie/:movieId",
+      element: <MovieDetail />,
+    },
   ]);
-
-
 
   return (
     <div>
-       <Toaster
+      <Toaster
         position="top-center"
         toastOptions={{
           style: {

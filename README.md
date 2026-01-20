@@ -70,6 +70,12 @@
 - Done a little of responsive design but still left
 - Made Header Responsive, Videotitle overview hidden on small screen sizes.
 - Adjusted the width of VideoBackground playing
+- Added MovieDetail Component for Movie Trailer playing and Movie details of It.
+- Added dynamic routing by using useParams hook
+- Added window.history.back() for navigating back to gpt search page
+- Made little bit of responsive
+- First Time used Tailwind CSS and also took help of chatgpt
+- Learnt a lot of things
 
 # Features
 

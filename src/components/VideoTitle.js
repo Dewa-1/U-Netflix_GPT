@@ -5,7 +5,7 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 const VideoTitle = ({ title, overview, posterImage }) => {
   return (
     <div className="w-full md:w-1/2 lg:w-1/3 px-4 sm:px-6 lg:px-10 pt-24 sm:pt-28 md:pt-36">
-      <div className="mb-6">
+      <div className="hidden sm:block">
         <img
           className="w-40 sm:w-48 md:w-56 bg-gradient-to-b from-black rounded-md border-none outline-none h-auto"
           src={`https://image.tmdb.org/t/p/original${posterImage}`}

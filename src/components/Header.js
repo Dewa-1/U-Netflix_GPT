@@ -77,7 +77,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed py-2 bg-gradient-to-b from-black w-full flex items-center justify-evenly z-50">
+    <div className="fixed py-2 bg-gradient-to-b from-black w-full flex items-center justify-between z-50">
       <div>
         <img
           className="w-20 sm:w-28 md:w-36 lg:w-44"
