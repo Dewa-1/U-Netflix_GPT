@@ -79,6 +79,7 @@
 - Changed Favicon and for different different sizes according to the screen sizes
 - Made Login Page Responsive
 - Learnt deployment 2 times and what if first time build fails or you have to delete the build
+- Fixed Firebase.json so that public directory is pointing to index.html
 - Learnt a lot and lot of things
 
 # Features
