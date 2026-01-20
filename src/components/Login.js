@@ -8,14 +8,12 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
 import { userProfileImage } from "../utils/constants";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const [IsSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const dispatch = useDispatch();
 
   const username = useRef(null);
   const phoneNumber = useRef(null);
@@ -25,181 +23,138 @@ const Login = () => {
   const handleClick = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
-
-    //Mtlb ki agar message aa rha hai to signIn/signUp nahi hoga kyunki validation fail hua hai
     if (message) return;
 
-    //SIGNUP LOGIC YHA AAEGA
-
     if (!IsSignInForm) {
-      //SignUp Logic yha check hoga ki user ne sahi data dala hai ya nahi agr sahi dala hai to firebase me user create kar dena hai
-
       createUserWithEmailAndPassword(
         auth,
-        email.current.value, //yha auth ki state change hui pehle uske baad hi onAuthStateChanged chalega
+        email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-
+        .then(({ user }) => {
           updateProfile(user, {
             displayName: username.current.value,
             photoURL: userProfileImage,
-          })
-            .then(() => {
-              const { uid, email, displayName, photoURL } = auth.currentUser; //Mtlb pehle createUserWithEmailAndPassword se user create hoga uske baad updateProfile chalega
-              //auth.currentUser se updated user ki info milegi
-              
-            })
-            .catch((error) => {
-              setErrorMessage(error.message);
-              // An error occurred
-              // ...
-            });
-
-          // dispatch(addUser({    //Ek tareeka hai redux me user info store karne ka
-          //   uid: user.uid,
-          //   email: user.email,
-          // }));
-          toast.success("Account created successfully! Welcome to Netflix 🎬", {
-            icon: "🔥",
-            duration: 2500,
           });
-          // ...
+
+          toast.success("Account created successfully! 🎬");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(`${errorCode} - ${errorMessage}`);
-          toast.error("Something went wrong. Please try again.", {
-            icon: "⚠️",
-            duration: 3000,
-          });
-
-          // ..
+          setErrorMessage(error.message);
+          toast.error("Signup failed");
         });
-    }
-
-    //SIGNIN LOGIC YHA AAEGA
-    else {
+    } else {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          const user = userCredential.user;
-          toast.success("Welcome back to Netflix 🎬", {
-            icon: "🔥",
-            duration: 2500,
-          });
-          // ...
+        .then(() => {
+          toast.success("Welcome back! 🎬");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(`${errorCode} - ${errorMessage}`);
-          toast.error("Something went wrong. Please try again.", {
-            icon: "⚠️",
-            duration: 3000,
-          });
+          setErrorMessage(error.message);
+          toast.error("Signin failed");
         });
     }
   };
 
-  const toggleIsSignInForm = () => {
-    setIsSignInForm(!IsSignInForm);
-  };
-
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <Header />
-      <div>
+
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/6fd9d446-cd78-453a-8c9c-417ed3e00422/web/IN-en-20251117-TRIFECTA-perspective_2fe4e381-977f-49fd-a7f4-1da0bcf09429_large.jpg"
-          alt=""
+          alt="background"
+          className="h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      <div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black p-12 space-y-6 rounded-md opacity-90 w-[30rem]"
+      {/* Form */}
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="
+          absolute top-1/2 left-1/2
+          -translate-x-1/2 -translate-y-1/2
+          bg-black bg-opacity-65
+          w-[90%] sm:w-full max-w-md
+          p-6 sm:p-8 md:p-10
+          rounded-md
+          space-y-4 sm:space-y-6
+        "
+      >
+        <h1 className="text-white text-2xl sm:text-3xl font-bold">
+          {IsSignInForm ? "Sign In" : "Sign Up"}
+        </h1>
+
+        {!IsSignInForm && (
+          <input
+            ref={username}
+            type="text"
+            placeholder="Name"
+            className="input w-full rounded-md px-2 py-2.5 bg-black text-gray-100 border-x-2 border-y-2"
+          />
+        )}
+
+        <input
+          ref={email}
+          type="email"
+          placeholder="Email"
+          className="input w-full rounded-md px-2 py-2.5 bg-black text-gray-100 border-x-2 border-y-2"
+        />
+
+        {!IsSignInForm && (
+          <input
+            ref={phoneNumber}
+            type="text"
+            placeholder="Phone Number"
+            className="input w-full px-2 hidden rounded-md bg-black py-2.5 sm:block text-gray-100 border-x-2 border-y-2"
+          />
+        )}
+
+        <input
+          ref={password}
+          type="password"
+          placeholder="Password"
+          className="input px-2 rounded-md w-full py-2.5 bg-black text-gray-100 border-x-2 border-y-2"
+        />
+
+        {errorMessage && (
+          <p className="text-red-500 text-sm font-semibold">{errorMessage}</p>
+        )}
+
+        <button
+          onClick={handleClick}
+          className="w-full bg-red-600 hover:bg-red-700 transition py-2.5 rounded-md font-bold text-white"
         >
-          <h1 className="text-white text-3xl font-extrabold">
-            {IsSignInForm ? "SignIn" : "SignUp"}
-          </h1>
-          {!IsSignInForm && (
-            <div>
-              <input
-                ref={username}
-                className="rounded-md  text-gray-100 w-[100%] h-15 p-4 bg-black opacity-80 border-x-2 border-y-2"
-                type="text"
-                placeholder="Name"
-              />
-            </div>
-          )}
-          <div>
-            <input
-              ref={email}
-              className="rounded-md  text-gray-100 w-[100%] h-15 p-4 bg-black opacity-80 border-x-2 border-y-2"
-              type="text"
-              placeholder="Email"
-            />
-          </div>
-          {!IsSignInForm && (
-            <div>
-              <input
-                ref={phoneNumber}
-                className="rounded-md  text-gray-100 w-[100%] h-15 p-4 bg-black opacity-80 border-x-2 border-y-2"
-                type="text"
-                placeholder="Phone number"
-              />
-            </div>
-          )}
-          <div>
-            <input
-              ref={password}
-              className="rounded-md  text-gray-100 border-white w-[100%] h-15 p-4 bg-black opacity-80 border-x-2 border-y-2"
-              type="password"
-              placeholder="Password"
-            />
-            <p className="text-red-500 font-bold text-lg py-4">
-              {errorMessage}
-            </p>
-          </div>
-          <button
-            className="bg-red-700 text-white w-[100%] h-10 font-extrabold rounded-md"
-            onClick={handleClick}
-          >
-            {IsSignInForm ? "Sign In" : "Sign Up"}
-          </button>
-          <div>
-            <h1 className="text-white text-center">OR</h1>
-          </div>
-          <button className="bg-gray-600 text-white w-[100%] h-10 font-extrabold rounded-md">
-            Use a sign-in code
-          </button>
-          <div>
-            <h3 className="text-white text-center underline">
-              Forgot Password?
-            </h3>
-          </div>
-          <div>
-            <h3
-              className="text-white cursor-pointer"
-              onClick={toggleIsSignInForm}
-            >
-              {IsSignInForm
-                ? "New to Netflix?Sign up now."
-                : "Already Registered? Sign In Now."}
-            </h3>
-          </div>
-        </form>
-      </div>
+          {IsSignInForm ? "Sign In" : "Sign Up"}
+        </button>
+
+        <div className="text-center text-white text-sm">OR</div>
+
+        <button
+          type="button"
+          className="w-full bg-gray-600 hover:bg-gray-700 transition py-2.5 rounded-md font-bold text-white"
+        >
+          Use a sign-in code
+        </button>
+
+        <p className="text-center text-sm text-white underline cursor-pointer">
+          Forgot password?
+        </p>
+
+        <p
+          onClick={() => setIsSignInForm(!IsSignInForm)}
+          className="text-white text-sm cursor-pointer"
+        >
+          {IsSignInForm
+            ? "New to Netflix? Sign up now."
+            : "Already registered? Sign in now."}
+        </p>
+      </form>
     </div>
   );
 };
