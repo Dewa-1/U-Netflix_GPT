@@ -41,7 +41,6 @@ const Header = () => {
       .catch((error) => {
         // An error happened.
         toast.error("Sign out failed");
-        console.log(error);
       });
   };
 

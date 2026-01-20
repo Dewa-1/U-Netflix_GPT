@@ -75,7 +75,9 @@
 - Added window.history.back() for navigating back to gpt search page
 - Made little bit of responsive
 - First Time used Tailwind CSS and also took help of chatgpt
-- Learnt a lot of things
+- Modified Index.html for better SEO practises and meta tag name, keywords and description
+- Changed Favicon and for different different sizes according to the screen sizes
+- Learnt a lot and lot of things
 
 # Features
 
